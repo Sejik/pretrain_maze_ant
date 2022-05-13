@@ -498,7 +498,7 @@ class Workspace:
         metrics = None
         _compress_me = list()
         is_success, is_success2 = False, False
-        while True: # train_until_step(self.global_step):
+        while train_until_step(self.global_step):
             if time_step.last():
                 if self.cfg.sibling_rivalry:
                     achieved0 = torch.stack([x[2] for x in _compress_me])
