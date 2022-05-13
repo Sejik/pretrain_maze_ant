@@ -1,0 +1,4 @@
+- maze_type=AntU
+- num_pretrain_frames=5010
+- num_train_frames=10010
+- oracle_dur=1000

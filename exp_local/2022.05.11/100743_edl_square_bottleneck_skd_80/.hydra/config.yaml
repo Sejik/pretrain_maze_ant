@@ -1,0 +1,105 @@
+agent:
+  _target_: agent.edl.EDLAgent
+  name: edl
+  reward_free: ${reward_free}
+  obs_type: ???
+  obs_shape: ???
+  action_shape: ???
+  action_range: ???
+  maze_type: ${maze_type}
+  device: ${device}
+  dtype: ${dtype}
+  update_every_steps: 2
+  num_expl_steps: ???
+  hidden_dim: 128
+  feature_dim: 128
+  nstep: 1
+  batch_size: 64
+  use_tb: ${use_tb}
+  use_wandb: ${use_wandb}
+  diayn_lr: 0.0003
+  diayn_scale: 1.0
+  update_skill_every_step: 25
+  skill_dim: 80
+  max_skill_dim: 200
+  critic_target_tau: 0.005
+  critic_lr: 0.0003
+  critic_target_update_frequency: 2
+  actor_update_frequency: 2
+  actor_lr: 0.0003
+  alpha_lr: 0.0003
+  log_std_bounds:
+  - -5
+  - 2
+  init_alpha: 0.1
+  init_critic: true
+  encoder_lr: 0.0003
+  update_encoder: ${update_encoder}
+  vae_lr: 0.0003
+  vae_args:
+    codebook_size: 80
+    code_size: 20
+    beta: 1.5
+    normalize_inputs: false
+    hidden_size: 128
+    num_layers: 3
+  smm_args:
+    z_dim: 4
+    sp_lr: 0.001
+    vae_lr: 0.01
+    vae_beta: 0.5
+    state_ent_coef: 1.0
+    latent_ent_coef: 1.0
+    latent_cond_ent_coef: 1.0
+    lr: 0.0001
+    critic_target_tau: 0.01
+    update_every_steps: 2
+    hidden_dim: 1024
+    feature_dim: 50
+    stddev_schedule: 0.2
+    stddev_clip: 0.3
+    nstep: 3
+    batch_size: 1024
+    init_critic: true
+reward_free: true
+domain: maze
+obs_type: states
+frame_stack: 3
+action_repeat: 1
+discount: 0.99
+num_pretrain_frames: 500010
+num_train_frames: 2500010
+num_seed_frames: 4000
+eval_every_frames: 10000
+num_eval_episodes: 10
+snapshots:
+- 100000
+- 500000
+- 1000000
+- 2000000
+- 2500000
+- 4000000
+- 6000000
+- 8000000
+- 9000000
+snapshot_dir: ../../../pretrained_models/${maze_type}/${agent.name}/${seed}
+replay_buffer_size: 1000000
+replay_buffer_num_workers: 1
+batch_size: ${agent.batch_size}
+nstep: 1
+update_encoder: true
+seed: 2
+device: cuda
+save_video: true
+save_train_video: false
+use_tb: false
+use_wandb: true
+wandb_name: None
+dtype: float32
+experiment: exp
+maximum_timestep: 50
+maze_type: square_bottleneck
+sibling_rivalry: true
+sibling_epsilon: 9.5
+oracle_num_samples: 4096
+oracle_dur: 50000

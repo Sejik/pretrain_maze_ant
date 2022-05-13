@@ -1,0 +1,64 @@
+defaults:
+  - agent: edl
+  - override hydra/launcher: submitit_local
+
+# mode
+reward_free: true
+# task settings
+domain: maze # primal task will be infered in runtime
+obs_type: states # [states, pixels]
+frame_stack: 3 # only works if obs_type=pixels
+action_repeat: 1 # set to 2 for pixels
+discount: 0.99
+# train settings
+num_pretrain_frames: 2000010
+num_train_frames: 2000010
+num_seed_frames: 4000
+# eval
+eval_every_frames: 10000
+num_eval_episodes: 10
+# snapshot
+snapshots: [100000, 500000, 1000000, 2000000, 2500000, 4000000, 6000000, 8000000, 9000000]
+snapshot_dir: ../../../pretrained_models/${maze_type}/${agent.name}/${seed}
+# replay buffer
+replay_buffer_size: 1000000
+replay_buffer_num_workers: 1
+batch_size: ${agent.batch_size}
+nstep: 1 #${agent.nstep}
+update_encoder: true # should always be true for pre-training
+# misc
+seed: 1
+device: cuda
+save_video: true
+save_train_video: false
+use_tb: false
+use_wandb: false
+wandb_name: None
+dtype: float32
+# experiment
+experiment: exp
+
+# maze environment settings
+maximum_timestep: 50
+maze_type: square_bottleneck
+
+sibling_rivalry: true
+sibling_epsilon: 9.5
+
+oracle_num_samples: 4096
+oracle_dur : 50000
+
+hydra:
+  run:
+    dir: ./exp_local/${now:%Y.%m.%d}/${now:%H%M%S}_${agent.name}_${maze_type}_skd_${agent.skill_dim}
+  sweep:
+    dir: ./exp_sweep/${now:%Y.%m.%d}/${now:%H%M}_${agent.name}_${experiment}
+    subdir: ${hydra.job.num}
+  launcher:
+    timeout_min: 4300
+    cpus_per_task: 10
+    gpus_per_node: 1
+    tasks_per_node: 1
+    mem_gb: 160
+    nodes: 1
+    submitit_folder: ./exp_sweep/${now:%Y.%m.%d}/${now:%H%M}_${agent.name}_${experiment}/.slurm

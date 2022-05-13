@@ -1,0 +1,200 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.12.15
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.8.0
+    start_time: 1652231473
+    t:
+      1:
+      - 1
+      - 5
+      - 50
+      - 53
+      - 55
+      3:
+      - 13
+      - 16
+      4: 3.8.0
+      5: 0.12.15
+      8:
+      - 5
+action_repeat:
+  desc: null
+  value: 1
+agent:
+  desc: null
+  value:
+    _target_: agent.edl.EDLAgent
+    action_range: 1
+    action_shape:
+    - 8
+    actor_lr: 0.0003
+    actor_update_frequency: 2
+    alpha_lr: 0.0003
+    batch_size: 64
+    critic_lr: 0.0003
+    critic_target_tau: 0.005
+    critic_target_update_frequency: 2
+    device: cuda
+    diayn_lr: 0.0003
+    diayn_scale: 1.0
+    dtype: float32
+    encoder_lr: 0.0003
+    feature_dim: 128
+    hidden_dim: 128
+    init_alpha: 0.1
+    init_critic: true
+    log_std_bounds:
+    - -5
+    - 2
+    max_skill_dim: 200
+    maze_type: AntU
+    name: edl
+    nstep: 1
+    num_expl_steps: 4000
+    obs_shape:
+    - 31
+    obs_type: states
+    reward_free: true
+    skill_dim: 80
+    smm_args:
+      batch_size: 1024
+      critic_target_tau: 0.01
+      feature_dim: 50
+      hidden_dim: 1024
+      init_critic: true
+      latent_cond_ent_coef: 1.0
+      latent_ent_coef: 1.0
+      lr: 0.0001
+      nstep: 3
+      sp_lr: 0.001
+      state_ent_coef: 1.0
+      stddev_clip: 0.3
+      stddev_schedule: 0.2
+      update_every_steps: 2
+      vae_beta: 0.5
+      vae_lr: 0.01
+      z_dim: 4
+    update_encoder: true
+    update_every_steps: 2
+    update_skill_every_step: 25
+    use_tb: false
+    use_wandb: true
+    vae_args:
+      beta: 1.5
+      code_size: 20
+      codebook_size: 80
+      hidden_size: 128
+      normalize_inputs: false
+      num_layers: 3
+    vae_lr: 0.0003
+batch_size:
+  desc: null
+  value: 64
+device:
+  desc: null
+  value: cuda
+discount:
+  desc: null
+  value: 0.99
+domain:
+  desc: null
+  value: maze
+dtype:
+  desc: null
+  value: float32
+eval_every_frames:
+  desc: null
+  value: 10000
+experiment:
+  desc: null
+  value: exp
+frame_stack:
+  desc: null
+  value: 3
+maximum_timestep:
+  desc: null
+  value: 50
+maze_type:
+  desc: null
+  value: AntU
+nstep:
+  desc: null
+  value: 1
+num_eval_episodes:
+  desc: null
+  value: 10
+num_pretrain_frames:
+  desc: null
+  value: 500010
+num_seed_frames:
+  desc: null
+  value: 4000
+num_train_frames:
+  desc: null
+  value: 2500010
+obs_type:
+  desc: null
+  value: states
+oracle_dur:
+  desc: null
+  value: 50000
+oracle_num_samples:
+  desc: null
+  value: 4096
+replay_buffer_num_workers:
+  desc: null
+  value: 1
+replay_buffer_size:
+  desc: null
+  value: 1000000
+reward_free:
+  desc: null
+  value: true
+save_train_video:
+  desc: null
+  value: false
+save_video:
+  desc: null
+  value: true
+seed:
+  desc: null
+  value: 1
+sibling_epsilon:
+  desc: null
+  value: 9.5
+sibling_rivalry:
+  desc: null
+  value: true
+snapshot_dir:
+  desc: null
+  value: ../../../pretrained_models/AntU/edl/1
+snapshots:
+  desc: null
+  value:
+  - 100000
+  - 500000
+  - 1000000
+  - 2000000
+  - 2500000
+  - 4000000
+  - 6000000
+  - 8000000
+  - 9000000
+update_encoder:
+  desc: null
+  value: true
+use_tb:
+  desc: null
+  value: false
+use_wandb:
+  desc: null
+  value: true
+wandb_name:
+  desc: null
+  value: None

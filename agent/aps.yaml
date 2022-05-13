@@ -1,0 +1,53 @@
+# @package agent
+_target_: agent.aps.APSAgent
+name: aps
+reward_free: ${reward_free}
+obs_type: ??? # to be specified later
+obs_shape: ??? # to be specified later
+action_shape: ??? # to be specified later
+action_range: ??? # to be specified later
+device: ${device}
+dtype: ${dtype}
+maze_type: ${maze_type}
+
+
+lr: 1e-4
+critic_target_tau: 0.01
+update_every_steps: 2
+use_tb: ${use_tb}
+use_wandb: ${use_wandb}
+num_expl_steps: ??? # to be specified later
+hidden_dim: 1024
+feature_dim: 50
+stddev_schedule: 0.2
+stddev_clip: 0.3
+skill_dim: 10
+update_skill_every_step: 5
+nstep: 3
+batch_size: 1024
+init_critic: false
+knn_rms: true
+knn_k: 12
+knn_avg: true
+knn_clip: 0.0001
+num_init_steps: 4096 # set to ${num_train_frames} to disable finetune policy parameters
+lstsq_batch_size: 4096
+
+eval_num_skills: 30
+
+# critic (SAC)
+# critic_target_tau: 0.005
+critic_lr : 3e-4
+critic_target_update_frequency: 2
+
+# actor, alpha (SAC)
+actor_update_frequency: 2
+actor_lr : 3e-4
+alpha_lr : 3e-4
+log_std_bounds: [-5, 2]  # Actor의 log_std를 제한
+init_alpha: 0.1
+
+
+# encoder
+encoder_lr: 3e-4
+update_encoder: ${update_encoder}

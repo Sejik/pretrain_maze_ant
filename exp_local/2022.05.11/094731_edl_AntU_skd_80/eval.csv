@@ -1,0 +1,4 @@
+episode,episode_reward,frame,new_state_coveraged(out of 150 bucekts),num_learned_skills,state_coveraged(out of 150 bucekts),step,total_time
+0.0,0.0,0,2.0,1.0,2.0,0.0,0.12301111221313477
+100.0,0.0,0,4.0,1.0,3.0,0.0,60.234456062316895
+300.0,0.0,10000,5.0,1.0,4.0,10000.0,253.45253896713257

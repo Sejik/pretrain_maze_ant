@@ -1,0 +1,2 @@
+[2022-05-11 09:41:36,451][multiworld.envs.pygame][INFO] - Registering multiworld pygame gym environments
+[2022-05-11 09:41:36,461][multiworld.envs.mujoco][INFO] - Registering multiworld mujoco gym environments

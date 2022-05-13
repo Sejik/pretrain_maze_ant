@@ -1,0 +1,26 @@
+{
+    "os": "Linux-4.4.0-131-generic-x86_64-with-glibc2.10",
+    "python": "3.8.0",
+    "heartbeatAt": "2022-05-11T01:11:39.457728",
+    "startedAt": "2022-05-11T01:11:12.716574",
+    "docker": null,
+    "gpu": "TITAN Xp",
+    "gpu_count": 10,
+    "cpu_count": 48,
+    "cuda": "10.1.105",
+    "args": [
+        "maze_type=AntU",
+        "use_wandb=true"
+    ],
+    "state": "running",
+    "program": "pretrain_maze.py",
+    "git": {
+        "remote": "https://github.com/mynsng/URL_baselines.git",
+        "commit": "bd323a28dc96ea16cf59ce2c26e07abcf3513b5f"
+    },
+    "email": null,
+    "root": "/home/nas2_userI/byungkunlee/SJ/URL_baselines",
+    "host": "davian-white",
+    "username": "byungkunlee",
+    "executable": "/home/nas2_userI/byungkunlee/anaconda3/envs/ris2/bin/python"
+}

@@ -1,0 +1,81 @@
+# @package agent
+
+# common
+_target_: agent.edl.EDLAgent
+name: edl
+reward_free: ${reward_free}
+obs_type: ??? # to be specified later
+obs_shape: ??? # to be specified later
+action_shape: ??? # to be specified later
+action_range: ??? # to be specified later
+maze_type: ${maze_type}
+device: ${device}
+dtype: ${dtype}
+
+update_every_steps: 2
+num_expl_steps: ??? # to be specified later
+hidden_dim: 128
+feature_dim: 128
+nstep: 1
+batch_size: 64
+use_tb: ${use_tb}
+use_wandb: ${use_wandb}
+
+# diayn
+diayn_lr: 3e-4
+diayn_scale: 1.0
+update_skill_every_step: 25
+skill_dim: 80
+max_skill_dim: 200
+
+# critic (SAC)
+critic_target_tau: 0.005
+critic_lr : 3e-4
+critic_target_update_frequency: 2
+
+# actor, alpha (SAC)
+actor_update_frequency: 2
+actor_lr : 3e-4
+alpha_lr : 3e-4
+log_std_bounds: [-5, 2]  # Actor의 log_std를 제한
+init_alpha: 0.1
+
+# fine-tuning
+init_critic: true
+
+# encoder
+encoder_lr: 3e-4
+update_encoder: ${update_encoder}
+
+# VAE
+vae_lr: 3e-4
+vae_args : {
+    "codebook_size": 80,
+    "code_size": 20,
+    "beta": 1.5,
+    "normalize_inputs": false,
+    "hidden_size": 128,
+    "num_layers": 3
+} # TODO : codebook_size = 10, code_size = 16
+
+
+# SMM
+smm_args : {
+    "z_dim": 4,
+    "sp_lr": 1e-3,
+    "vae_lr": 1e-2,
+    "vae_beta": 0.5,
+    "state_ent_coef": 1.0,
+    "latent_ent_coef": 1.0,
+    "latent_cond_ent_coef": 1.0,
+    "lr": 1e-4,
+    "critic_target_tau": 0.01,
+    "update_every_steps": 2,
+    "hidden_dim": 1024,
+    "feature_dim": 50,
+    "stddev_schedule": 0.2,
+    "stddev_clip": 0.3,
+    "nstep": 3,
+    "batch_size": 1024,
+    "init_critic": true
+}

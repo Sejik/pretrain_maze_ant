@@ -1,0 +1,1 @@
+[2022-05-11 00:36:17,862][matplotlib.legend][WARNING] - No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
